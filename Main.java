@@ -12,24 +12,29 @@ public class Main {
 	private static final String NO_SOLDI="mi dispiace hai perso";
 	private static final String NO_CARTA="mi dispiace sono finite le carte la partita è finita";
 	private static final String ADDIO="Addio";
+	private static final String RICHIESTA_NOME="inserisci nome";
+	private static final String RICHIESTA_SALDO="inserisci quanto vuoi giocare";
+	private static final String BENVENUTO="benvenuto %s";
+	private static final String CARTA_E="la carta del giocatore è %s";
+	private static final String RICHIESTA_SCOMMETTI="quanto scommetti?";
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Giocatore player=new Giocatore(Input.leggiString("inserisci nome"),Input.leggiIntero(0,-3,"inserisci quanto vuoi giocare"));
-		System.out.println("benvenuto "+ player.getNome());
+		Giocatore player=new Giocatore(Input.leggiString(RICHIESTA_NOME),Input.leggiIntero(0,-3,RICHIESTA_SALDO));
+		System.out.println(String.format(BENVENUTO,player.getNome()));
 		Mazzo mazzo=new Mazzo();
 		String msg="";
 		boolean smetti=false;
 		do
 		{
 		Carta cartaGiocatore=mazzo.estrai();
-		msg=String.format("la carta del giocatore è "+ cartaGiocatore.getNome());
+		msg=String.format(String.format(CARTA_E,cartaGiocatore.getNome()));
 		System.out.println(msg);
 		int scelta=MENU.scegli();
 		switch(scelta)
 		{
 		case 1:{
-			int scommessa=Input.leggiIntero(0, player.getAmount()+1,"quanto scommetti?");
+			int scommessa=Input.leggiIntero(0, player.getAmount()+1,RICHIESTA_SCOMMETTI);
 			Carta cartaBanco=mazzo.estrai();
 			msg=String.format("la carta del banco è "+ cartaBanco.getNome());
 			System.out.println(msg);
