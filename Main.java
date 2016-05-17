@@ -4,8 +4,15 @@ import myLib.Input;
 import myLib.MyMenu;
 
 public class Main {
-private static final String []VOCI={"SCOMMETTI","RIFIUTA"};
-private static final MyMenu MENU=new MyMenu("menu",VOCI);
+	private static final String []VOCI={"SCOMMETTI","RIFIUTA"};
+	private static final MyMenu MENU=new MyMenu("menu",VOCI);
+	private static final String VITTORIA="vince il giocatore ";
+	private static final String PAREGGIO="vince il giocatore ";
+	private static final String PERDITA="vince il banco ";
+	private static final String NO_SOLDI="mi dispiace hai perso";
+	private static final String NO_CARTA="mi dispiace sono finite le carte la partita è finita";
+	private static final String ADDIO="Addio";
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Giocatore player=new Giocatore(Input.leggiString("inserisci nome"),Input.leggiIntero(0,-3,"inserisci quanto vuoi giocare"));
@@ -27,8 +34,8 @@ private static final MyMenu MENU=new MyMenu("menu",VOCI);
 			msg=String.format("la carta del banco è "+ cartaBanco.getNome());
 			System.out.println(msg);
 			if(cartaGiocatore.getValore()>cartaBanco.getValore())
-			{
-				msg=String.format("vince il giocatore ");
+			{	//Caso vittoria
+				msg=String.format(VITTORIA);
 				System.out.println(msg);
 				player.setAmount(scommessa);
 				System.out.println(player.getAmount());
@@ -37,17 +44,19 @@ private static final MyMenu MENU=new MyMenu("menu",VOCI);
 			{
 				if(cartaGiocatore.getValore()==cartaBanco.getValore())
 				{
-					msg=String.format("pareggio si procede ad un altro turno");
+					//Caso Pareggio
+					msg=String.format(PAREGGIO);
 					System.out.println(msg);
 				}
 				else
 				{
-					msg=String.format("vince il banco ");
+					//caso perdita
+					msg=String.format(PERDITA);
 					System.out.println(msg);
 					player.setAmount(-scommessa);
 					if(!player.puòGiocare())
 					{
-						msg=String.format("mi dispiace hai perso");
+						msg=String.format(NO_SOLDI);
 						System.out.println(msg);
 						System.exit(0);
 					}
@@ -61,7 +70,7 @@ private static final MyMenu MENU=new MyMenu("menu",VOCI);
 			case 2:break;
 			case 0: {
 					smetti=true; 
-					System.out.println("Ciao");
+					System.out.println(ADDIO);
 					
 					break;}
 					
@@ -71,7 +80,7 @@ private static final MyMenu MENU=new MyMenu("menu",VOCI);
 		}	while((!smetti)&&mazzo.mazzo.size()>1);
 		if(mazzo.mazzo.size()<=1)
 		{
-			msg=String.format("mi dispiace sono finite le carte la partita è finita");
+			msg=String.format(NO_CARTE);
 			System.out.println(msg);
 		}
 		
