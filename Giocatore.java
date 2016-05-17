@@ -26,8 +26,8 @@ public class Giocatore {
 	
 	/**
 	 * verifica se il giocatore ha ancora un saldo positivo
-	 * @return true se il saldo è positivo
-	 * @return false se il saldo è negativo o nullo
+	 * @return true se il saldo &egrave positivo
+	 * @return false se il saldo &egrave negativo o nullo
 	 */
 	public boolean puòGiocare()
 	{
