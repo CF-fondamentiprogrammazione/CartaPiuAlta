@@ -5,9 +5,9 @@ public class Giocatore {
 	private String nome;
 	
 	/**
-	 * 
-	 * @param _nome
-	 * @param _amount
+	 * costruttore di tipo Giocatore
+	 * @param _nome nome del giocatore
+	 * @param _amount quanti&agrave di soldi disponibili da giocare
 	 */
 	public Giocatore( String _nome,int _amount)
 	{
@@ -16,8 +16,8 @@ public class Giocatore {
 	}
 	
 	/**
-	 * 
-	 * @param vincita
+	 * dopo un round aggiorna il saldo disponibile
+	 * @param vincita quanto il giocatore ha puntato positivo se ha vinto negativo se ha perso
 	 */
 	public void setAmount(int vincita)
 	{
@@ -36,8 +36,8 @@ public class Giocatore {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * restituisce il saldo del giocatore
+	 * @return il saldo del giocatore
 	 */
 	public int getAmount()
 	{
