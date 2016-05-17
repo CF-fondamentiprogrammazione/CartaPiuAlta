@@ -1,41 +1,33 @@
-package CartaPiùAlta;
+package CartaPiÃ¹Alta;
 import java.util.ArrayList;
 public class Mazzo {
 public ArrayList<Carta> mazzo=new ArrayList<Carta>();
-public Mazzo()
-{
-	for (int i=1;i<14;i++)
+	
+	/**
+	 * 
+	 */
+	public Mazzo()
 	{
-		if(i==1)
+		for (int i=0;i<13;i++)
 		{
-			Carta cartaCuori=new Carta('c',14);
-			mazzo.add(cartaCuori);
-			Carta cartaQuadri=new Carta('q',14);
-			mazzo.add(cartaQuadri);
-			Carta cartaFiori=new Carta('f',14);
-			mazzo.add(cartaFiori);
-			Carta cartaPicche=new Carta('p',14);
-			mazzo.add(cartaPicche);
-		}
-		else
-		{
-		Carta cartaCuori=new Carta('c',i);
-		mazzo.add(cartaCuori);
-		Carta cartaQuadri=new Carta('q',i);
-		mazzo.add(cartaQuadri);
-		Carta cartaFiori=new Carta('f',i);
-		mazzo.add(cartaFiori);
-		Carta cartaPicche=new Carta('p',i);
-		mazzo.add(cartaPicche);
+			for (int j=0; j<4;j++)
+			{
+			Carta carta=new Carta(j,i);
+				mazzo.add(carta);
+			}
 		}
 	}
-}
-public Carta estrai()
-{
-	int indice=Estrai.estrai(mazzo.size()-1);
-	Carta carta =mazzo.get(indice);
-	mazzo.remove(indice);	
-return carta;
-
-}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Carta estrai()
+	{
+		int indice=Estrai.estrai(mazzo.size()-1);
+		Carta carta =mazzo.get(indice);
+		mazzo.remove(indice);	
+	return carta;
+	
+	}
 }
