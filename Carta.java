@@ -6,7 +6,7 @@ public class Carta {
 	
 	/**
 	 * Costruttore del tipo Carta
-	 * @param _indexSeme numero tra 1 e 4-> cuori, quadri, fiori, picche
+	 * @param _indexSeme numero tra 0 e 3-> cuori, quadri, fiori, picche
 	 * @param _indexNumero
 	 */
 	public Carta(int _indexSeme,int _indexNumero)
