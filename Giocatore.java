@@ -25,8 +25,9 @@ public class Giocatore {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * verifica se il giocatore ha ancora un saldo positivo
+	 * @return true se il saldo è positivo
+	 * @return false se il saldo è negativo o nullo
 	 */
 	public boolean puòGiocare()
 	{
@@ -44,8 +45,8 @@ public class Giocatore {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * restituisce il nome del giocatore
+	 * @return il nome del giocatore
 	 */
 	public String getNome()
 	{
