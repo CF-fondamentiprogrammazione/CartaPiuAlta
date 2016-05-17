@@ -4,7 +4,7 @@ public class Mazzo {
 public ArrayList<Carta> mazzo=new ArrayList<Carta>();
 	
 	/**
-	 * 
+	 * costruttore di tipo Mazzo
 	 */
 	public Mazzo()
 	{
@@ -19,8 +19,8 @@ public ArrayList<Carta> mazzo=new ArrayList<Carta>();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Estrae una carta dal mazzo e la rimuove
+	 * @return Carta
 	 */
 	public Carta estrai()
 	{
