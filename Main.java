@@ -1,57 +1,80 @@
-package CartaPiùAlta;
+package CartaPiÃ¹Alta;
 
 import myLib.Input;
 import myLib.MyMenu;
 
 public class Main {
-public static final String []voci={"SCOMMETTI","RIFIUTA"};
+private static final String []VOCI={"SCOMMETTI","RIFIUTA"};
+private static final MyMenu MENU=new MyMenu("menu",VOCI);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Giocatore player=new Giocatore(Input.leggiString("inserisci nome"),Input.leggiIntero(0,-3,"inserisci quanto vuoi giocare"));
 		System.out.println("benvenuto "+ player.getNome());
 		Mazzo mazzo=new Mazzo();
-		
+		String msg="";
 		boolean smetti=false;
-		MyMenu menu=new MyMenu("menu",voci);
 		do
 		{
-		//if(mazzo.mazzo.size()<=0)break;	
 		Carta cartaGiocatore=mazzo.estrai();
-		System.out.println("la carta del giocatore è "+ cartaGiocatore.getValore()+cartaGiocatore.getSegno());
-		int scelta=menu.scegli();
+		msg=String.format("la carta del giocatore Ã¨ "+ cartaGiocatore.getNome());
+		System.out.println(msg);
+		int scelta=MENU.scegli();
 		switch(scelta)
 		{
 		case 1:{
-			//System.out.println("quanto scommetti?");
 			int scommessa=Input.leggiIntero(0, player.getAmount()+1,"quanto scommetti?");
-			//if(mazzo.mazzo.size()<=0)break;	
 			Carta cartaBanco=mazzo.estrai();
-			System.out.println("la carta del banco è "+ cartaBanco.getValore()+cartaBanco.getSegno());
+			msg=String.format("la carta del banco Ã¨ "+ cartaBanco.getNome());
+			System.out.println(msg);
 			if(cartaGiocatore.getValore()>cartaBanco.getValore())
 			{
-				System.out.println("vince il giocatore ");
+				msg=String.format("vince il giocatore ");
+				System.out.println(msg);
 				player.setAmount(scommessa);
 				System.out.println(player.getAmount());
 			}
-			else {
-				System.out.println("vince il banco ");
-				player.setAmount(-scommessa);
-				if(!player.puòGiocare())
+			else
+			{
+				if(cartaGiocatore.getValore()==cartaBanco.getValore())
 				{
-					System.out.println("mi dispiace hai perso");
-					System.exit(0);
+					msg=String.format("pareggio si procede ad un altro turno");
+					System.out.println(msg);
+				}
+				else
+				{
+					msg=String.format("vince il banco ");
+					System.out.println(msg);
+					player.setAmount(-scommessa);
+					if(!player.puÃ²Giocare())
+					{
+						msg=String.format("mi dispiace hai perso");
+						System.out.println(msg);
+						System.exit(0);
 					}
-				else System.out.println(player.getAmount());
-			};break;}
+					else 
+					{
+						System.out.println(player.getAmount());
+					}
+				}
+			}
+			break;}
 			case 2:break;
-			case 0: smetti=true;break;
+			case 0: {
+					smetti=true; 
+					System.out.println("Ciao");
+					
+					break;}
+					
+			}
 			
-		}
+		
 		}	while((!smetti)&&mazzo.mazzo.size()>1);
 		if(mazzo.mazzo.size()<=1)
 		{
-			System.out.println("mi dispiace sono finite le carte la partita è finita");
+			msg=String.format("mi dispiace sono finite le carte la partita Ã¨ finita");
+			System.out.println(msg);
 		}
+		
 		System.exit(0);
 		}
 		
